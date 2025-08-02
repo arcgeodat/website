@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
+
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,52 +17,39 @@ import { translations } from './translations';
 
 function App() {
   const [language, setLanguage] = useState('en');
-  const [currentPage, setCurrentPage] = useState('home');
   const t = translations[language as keyof typeof translations];
 
-  const renderCurrentPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return (
-          <>
-            <Hero translations={t} setCurrentPage={setCurrentPage} />
-            <About translations={t} />
-            <Services translations={t} setCurrentPage={setCurrentPage} />
-          </>
-        );
-      case 'about':
-        return <About translations={t} />;
-      case 'services':
-        return <Services translations={t} setCurrentPage={setCurrentPage} />;
-      case 'portfolio':
-        return <PortfolioPage translations={t} setCurrentPage={setCurrentPage} />;
-      case 'contact':
-        return <Contact translations={t} />;
-      default:
-        return (
-          <>
-            <Hero translations={t} setCurrentPage={setCurrentPage} />
-            <About translations={t} />
-            <Services translations={t} setCurrentPage={setCurrentPage} />
-          </>
-        );
-    }
-  };
-
   return (
-    <div className="min-h-screen">
-      <Header 
-        language={language} 
-        setLanguage={setLanguage} 
-        translations={t} 
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-      <main>
-        {renderCurrentPage()}
-      </main>
-      <Footer translations={t} />
-    </div>
+    <Router>
+      <div className="min-h-screen">
+        <Header
+          language={language}
+          setLanguage={setLanguage}
+          translations={t}
+        />
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero translations={t} />
+                  <About translations={t} />
+                  <Services translations={t} />
+                </>
+              }
+            />
+
+            <Route path="/about" element={<About translations={t} />} />
+            <Route path="/services" element={<Services translations={t} />} />
+            <Route path="/portfolio" element={<PortfolioPage translations={t} />} />
+            <Route path="/contact" element={<Contact translations={t} />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </main>
+        <Footer translations={t} />
+      </div>
+    </Router>
   );
 }
 

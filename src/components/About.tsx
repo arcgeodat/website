@@ -10,7 +10,7 @@ const About: React.FC<AboutProps> = ({ translations }) => {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
+          <div id='aboutus' className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
             {translations.about.badge}
           </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">{translations.about.title}</h2>
@@ -45,9 +45,9 @@ const About: React.FC<AboutProps> = ({ translations }) => {
 
           <div className="relative">
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <img 
-                src="https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Professional surveying team" 
+              <img
+                src="https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Professional surveying team"
                 className="rounded-xl w-full h-64 object-cover mb-6"
               />
               <div className="space-y-4">

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Calendar, MapPin, ArrowLeft, ExternalLink, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 interface PortfolioPageProps {
   translations: any;
-  setCurrentPage: (page: string) => void;
 }
 
-const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentPage }) => {
+const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations }) => {
+  const navigate = useNavigate();
   const projects = [
     {
       id: 1,
@@ -118,15 +119,19 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
   const [selectedCategory, setSelectedCategory] = React.useState(translations.portfolio.categories.all);
   const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
-  const filteredProjects = selectedCategory === translations.portfolio.categories.all 
-    ? projects 
+  const filteredProjects = selectedCategory === translations.portfolio.categories.all
+    ? projects
     : projects.filter(project => project.category === selectedCategory);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   if (selectedProject) {
     return (
       <section className="pt-20 min-h-screen bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <button 
+          <button
             onClick={() => setSelectedProject(null)}
             className="inline-flex items-center text-blue-700 hover:text-blue-800 mb-8 font-medium"
           >
@@ -136,8 +141,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
 
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="relative h-96">
-              <img 
-                src={selectedProject.image} 
+              <img
+                src={selectedProject.image}
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"
               />
@@ -193,8 +198,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
                 </div>
 
                 <div className="pt-6 border-t">
-                  <button 
-                    onClick={() => setCurrentPage('contact')}
+                  <button
+                    onClick={() => navigate('contact')}
                     className="inline-flex items-center px-6 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors font-semibold"
                   >
                     {translations.portfolio.projectDetails.contactUs}
@@ -228,11 +233,10 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
             <button
               key={index}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                selectedCategory === category
-                  ? 'bg-blue-800 text-white'
-                  : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-800'
-              }`}
+              className={`px-6 py-2 rounded-full font-medium transition-colors ${selectedCategory === category
+                ? 'bg-blue-800 text-white'
+                : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-800'
+                }`}
             >
               {category}
             </button>
@@ -242,15 +246,15 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {filteredProjects.map((project) => (
-            <div 
-              key={project.id} 
+            <div
+              key={project.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
               <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">
@@ -260,7 +264,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              
+
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center text-sm text-gray-500">
@@ -269,15 +273,15 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
                   </div>
                   <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-blue-600 transition-colors" />
                 </div>
-                
+
                 <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-800 transition-colors">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-sm text-gray-500">
                     <MapPin className="h-4 w-4 mr-1" />
@@ -296,8 +300,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations, setCurrentP
         <div className="text-center bg-white rounded-2xl p-12 shadow-lg">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">{translations.portfolio.cta.title}</h3>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">{translations.portfolio.cta.description}</p>
-          <button 
-            onClick={() => setCurrentPage('contact')}
+          <button
+            onClick={() => navigate('contact')}
             className="inline-flex items-center px-8 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors font-semibold"
           >
             {translations.portfolio.cta.contact}

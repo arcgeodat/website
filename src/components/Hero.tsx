@@ -1,12 +1,24 @@
 import React from 'react';
-import { ArrowRight, Award, Users, CheckCircle, Phone } from 'lucide-react';
+import { ArrowRight, Award, Users, CheckCircle, Phone, HandPlatter } from 'lucide-react';
 
 interface HeroProps {
   translations: any;
-  setCurrentPage: (page: string) => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ translations, setCurrentPage }) => {
+const Hero: React.FC<HeroProps> = ({ translations }) => {
+
+  const handleNavigation = (partId: string) => {
+    const element = document.getElementById(partId);
+    if (element) {
+      const offset = -100; // scroll a bit above the element
+      const y = element.getBoundingClientRect().top + window.scrollY + offset;
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <section className="pt-20 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
@@ -14,7 +26,7 @@ const Hero: React.FC<HeroProps> = ({ translations, setCurrentPage }) => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
+              <div id='home' className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
                 <CheckCircle className="h-4 w-4 mr-2" />
                 {translations.hero.certified}
               </div>
@@ -56,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ translations, setCurrentPage }) => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => setCurrentPage('contact')}
+                onClick={() => handleNavigation('contact')}
                 className="inline-flex items-center justify-center px-8 py-4 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors font-semibold shadow-lg group"
               >
                 {translations.hero.cta}

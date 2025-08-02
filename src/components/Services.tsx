@@ -1,12 +1,13 @@
 import React from 'react';
 import { FileCheck, Ruler, Map, Box, Users, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 interface ServicesProps {
   translations: any;
-  setCurrentPage: (page: string) => void;
 }
 
-const Services: React.FC<ServicesProps> = ({ translations, setCurrentPage }) => {
+const Services: React.FC<ServicesProps> = ({ translations }) => {
+  const navigate = useNavigate();
   const services = [
     {
       icon: FileCheck,
@@ -60,7 +61,7 @@ const Services: React.FC<ServicesProps> = ({ translations, setCurrentPage }) => 
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
+          <div id='services' className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
             {translations.services.badge}
           </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">{translations.services.title}</h2>
@@ -87,8 +88,7 @@ const Services: React.FC<ServicesProps> = ({ translations, setCurrentPage }) => 
                     </li>
                   ))}
                 </ul>
-                <button 
-                  onClick={() => setCurrentPage('contact')}
+                <button
                   className="inline-flex items-center text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors group-hover:translate-x-1 transform duration-200"
                 >
                   {translations.services.learnMore}
@@ -104,15 +104,15 @@ const Services: React.FC<ServicesProps> = ({ translations, setCurrentPage }) => 
           <h3 className="text-2xl font-bold mb-4">{translations.services.cta.title}</h3>
           <p className="text-blue-100 mb-8 max-w-2xl mx-auto">{translations.services.cta.description}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => setCurrentPage('contact')}
+            <button
+              onClick={() => navigate('contact')}
               className="inline-flex items-center px-8 py-3 bg-white text-blue-800 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
             >
               {translations.services.cta.contact}
               <ArrowRight className="ml-2 h-5 w-5" />
             </button>
-            <button 
-              onClick={() => setCurrentPage('portfolio')}
+            <button
+              onClick={() => navigate('portfolio')}
               className="inline-flex items-center px-8 py-3 border-2 border-white text-white rounded-lg hover:bg-white hover:text-blue-800 transition-colors font-semibold"
             >
               {translations.services.cta.portfolio}

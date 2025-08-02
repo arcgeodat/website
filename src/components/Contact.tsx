@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Phone, Mail, MapPin, MessageCircle, Send, Clock, Globe, CheckCircle } from 'lucide-react';
 
 interface ContactProps {
@@ -31,8 +31,12 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
