@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
             <p className="text-gray-300 leading-relaxed mb-6 max-w-md">
               {translations.footer.description}
             </p>
-            
+
             {/* Social Links */}
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -55,16 +55,16 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-300">+373 69 123 456</span>
+                <span className="text-gray-300">+373 68 534 760</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-300">info@arcgeodat.md</span>
+                <span className="text-gray-300">arcgeodat@gmail.com</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-blue-400 mt-1" />
                 <span className="text-gray-300">
-                  Strada Mihai Eminescu 123<br />
+                  str. Miron Costin 25, of 126<br />
                   Chișinău, Moldova
                 </span>
               </div>
@@ -75,7 +75,7 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 Arcgeodat. {translations.footer.rights}
+            © 2009 - {new Date().getFullYear()} Arcgeodat. {translations.footer.rights}
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
