@@ -1,11 +1,67 @@
-import React from 'react';
-import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Phone, Mail } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface FooterProps {
   translations: any;
 }
 
 const Footer: React.FC<FooterProps> = ({ translations }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleNavigation = (partId: string) => {
+    // If already on Home page (assuming '/' is home)
+    if (location.pathname === '/') {
+      const element = document.getElementById(partId);
+      if (element) {
+        const offset = -100;
+        const y = element.getBoundingClientRect().top + window.scrollY + offset;
+
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth',
+        });
+        setIsMenuOpen(false);
+        return;
+      }
+    }
+
+    // If not on Home or element not found on home, navigate to the route
+    // Map your IDs to routes here:
+    const routesMap: Record<string, string> = {
+      contact: '/contact',
+      portfolio: '/portfolio',
+      about: '/',      // About is on home page, so navigate home then scroll
+      services: '/',   // Same here
+    };
+
+    const targetRoute = routesMap[partId] || '/';
+
+    if (location.pathname !== targetRoute) {
+      navigate(targetRoute);
+    }
+
+    // If target is home page, delay scroll to element after navigation
+    if (targetRoute === '/') {
+      // Scroll after navigation completes, wait a bit for the DOM to render
+      setTimeout(() => {
+        const el = document.getElementById(partId);
+        if (el) {
+          const offset = -100;
+          const y = el.getBoundingClientRect().top + window.scrollY + offset;
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth',
+          });
+        }
+      }, 200);
+    }
+
+    setIsMenuOpen(false);
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -22,30 +78,17 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
             <p className="text-gray-300 leading-relaxed mb-6 max-w-md">
               {translations.footer.description}
             </p>
-
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin className="h-6 w-6" />
-              </a>
-            </div>
           </div>
 
           {/* Services */}
           <div>
             <h4 className="text-lg font-semibold mb-6">{translations.footer.services}</h4>
             <ul className="space-y-3">
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">{translations.services.cadastral.title}</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">{translations.services.surveying.title}</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">{translations.services.topographic.title}</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">{translations.services.modeling.title}</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">{translations.services.consulting.title}</a></li>
+              <li onClick={() => handleNavigation('services')} className="text-gray-300 hover:text-white transition-colors cursor-pointer ">{translations.services.cadastral.title}</li>
+              <li onClick={() => handleNavigation('services')} className="text-gray-300 hover:text-white transition-colors cursor-pointer ">{translations.services.surveying.title}</li>
+              <li onClick={() => handleNavigation('services')} className="text-gray-300 hover:text-white transition-colors cursor-pointer ">{translations.services.topographic.title}</li>
+              <li onClick={() => handleNavigation('services')} className="text-gray-300 hover:text-white transition-colors cursor-pointer ">{translations.services.modeling.title}</li>
+              <li onClick={() => handleNavigation('services')} className="text-gray-300 hover:text-white transition-colors cursor-pointer ">{translations.services.consulting.title}</li>
             </ul>
           </div>
 
@@ -55,12 +98,17 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-300">+373 68 534 760</span>
+                <a href="tel:+37368534760" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  +373 68 534 760
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-300">arcgeodat@gmail.com</span>
+                <a href="mailto:arcgeodat@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  arcgeodat@gmail.com
+                </a>
               </div>
+
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-blue-400 mt-1" />
                 <span className="text-gray-300">
