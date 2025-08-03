@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Phone, Mail, MapPin, MessageCircle, Send, Clock, Globe, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle, Send, Clock, Globe, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs, { send } from '@emailjs/browser';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface ContactProps {
   translations: any;
@@ -16,6 +17,17 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [messageType, setMessageType] = useState(''); // "success" or "error"
+  const [isLoading, setIsLoading] = useState(false);
+
+
+  useEffect(() => {
+    console.log('issubmitted changed:', isSubmitted);
+    if (isSubmitted !== null) {
+      const timer = setTimeout(() => setIsSubmitted(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -25,9 +37,7 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
   };
 
   const sendEmail = () => {
-    console.log('Sending email with data:', import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY, formData);
-
-    emailjs.send("service_arcgeodat", "template_hc5wtcm", {
+    return emailjs.send("service_arcgeodat", "template_hc5wtcm", {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
@@ -35,25 +45,28 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
       message: formData.message,
     }, {
       publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
-    }).then(
-      function (response) {
-        console.log('SUCCESS!', response.status, response.text);
-      },
-      function (err) {
-        console.log('FAILED...', err);
-      },
-    );
-  }
+    });
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    sendEmail();
-    // Reset form data
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    // Show success
+    setIsLoading(true);
+    try {
+      const response = await sendEmail();
+      if (response.status === 200) {
+        setMessageType('success');
+      } else {
+        setMessageType('error');
+      }
+      setIsSubmitted(true);
+    } catch (error) {
+      setMessageType('error');
+      setIsSubmitted(true);
+    } finally {
+      setIsLoading(false);
+    }
     console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+    // setFormData({ name: '', email: '', phone: '', service: '', message: '' });
   };
 
   useEffect(() => {
@@ -152,14 +165,34 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
             <div className="bg-gray-50 rounded-2xl p-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6">{translations.contact.form.title}</h3>
 
-              {isSubmitted && (
-                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
-                    <p className="text-green-800 font-medium">{translations.contact.form.success}</p>
-                  </div>
-                </div>
-              )}
+              <AnimatePresence>
+                {isSubmitted && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className={`mb-6 p-4 border rounded-xl flex items-center
+                      ${messageType === "success"
+                        ? "border-green-200 bg-green-50 text-green-800"
+                        : "border-red-200 bg-red-50 text-red-800"
+                      }
+                  `}
+                    key="notification"
+                  >
+                    {messageType === "success" ? (
+                      <CheckCircle className="h-5 w-5 mr-2" />
+                    ) : (
+                      <AlertCircle className="h-5 w-5 mr-2" />
+                    )}
+                    <p className="font-medium">
+                      {messageType === "success"
+                        ? translations.contact.form.successfulMessage
+                        : translations.contact.form.failureMessage}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -171,6 +204,7 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
                       type="text"
                       id="name"
                       name="name"
+                      pattern="^[a-zA-ZăâîșțĂÂÎȘȚ\s]+$"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
@@ -202,6 +236,9 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
                       type="tel"
                       id="phone"
                       name="phone"
+                      pattern="^0\d{8}$"
+                      maxLength={9}
+                      placeholder="ex: 061234567"
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
@@ -216,9 +253,12 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                     >
-                      <option value="">{translations.contact.form.selectService}</option>
+                      <option value="" disabled>
+                        {translations.contact.form.selectService}
+                      </option>
                       <option value="cadastral">{translations.services.cadastral.title}</option>
                       <option value="surveying">{translations.services.surveying.title}</option>
                       <option value="topographic">{translations.services.topographic.title}</option>
@@ -249,7 +289,7 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
                   className="w-full bg-blue-800 text-white py-4 px-6 rounded-xl hover:bg-blue-900 transition-colors flex items-center justify-center font-semibold shadow-lg"
                 >
                   <Send className="h-5 w-5 mr-2" />
-                  {translations.contact.form.submit}
+                  {isLoading ? translations.contact.form.submitting : translations.contact.form.submit}
                 </button>
               </form>
             </div>
