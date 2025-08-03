@@ -88,12 +88,12 @@ const Services: React.FC<ServicesProps> = ({ translations }) => {
                     </li>
                   ))}
                 </ul>
-                <button
+                {/* <button
                   className="inline-flex items-center text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors group-hover:translate-x-1 transform duration-200"
                 >
                   {translations.services.learnMore}
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </button>
+                </button> */}
               </div>
             );
           })}
