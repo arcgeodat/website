@@ -39,7 +39,7 @@ export const translations = {
       title: "About us",
       description: "With over 15 years of experience in geodetic and geographic services, Arcgeodat has established itself as a trusted partner for private individuals and businesses across Moldova. We combine traditional surveying expertise with cutting-edge technology to deliver millimeter-precise, reliable results that meet national standards.",
       highlights: [
-        "Licensed geodetic engineers with international certifications",
+        "Licensed geodetic engineers with national certifications",
         "State-of-the-art surveying equipment and GPS technology",
         "Comprehensive insurance coverage for all projects",
         "Fast turnaround times with detailed documentation",
@@ -272,7 +272,7 @@ export const translations = {
       title: "Despre noi",
       description: "Cu peste 15 ani de experiență în servicii geodezice și geografice, Arcgeodat s-a stabilit ca un partener de încredere pentru persoane fizice și afaceri din Moldova. Combinăm expertiza tradițională de topografie cu tehnologia de ultimă generație pentru a livra rezultate precise milimetric și de încredere care respectă standardele naționale.",
       highlights: [
-        "Ingineri geodezi licențiați cu certificări internaționale",
+        "Ingineri geodezi licențiați cu certificări naționale",
         "Echipamente de topografie de ultimă generație și tehnologie GPS",
         "Acoperire de asigurare comprehensivă pentru toate proiectele",
         "Timpi de execuție rapizi cu documentație detaliată",
@@ -284,11 +284,11 @@ export const translations = {
       },
       mission: {
         title: "Misiunea Noastră",
-        description: "Să oferim servicii geodezice precise milimetric și de încredere care să ajute clienții noștri să ia decizii informate despre investițiile în terenuri și proprietăți."
+        description: "Să oferim servicii geodezice precise și de încredere care să ajute clienții noștri să ia decizii informate despre investițiile în terenuri și proprietăți."
       },
       vision: {
         title: "Viziunea Noastră",
-        description: "Să fim furnizorul principal de servicii geodezice din Moldova, stabilind standardul pentru precizie, profesionalism și inovație tehnologică."
+        description: "Dorim să fim un partener de încredere în domeniul geodeziei din Moldova, oferind servicii precise și inovatoare care sprijină dezvoltarea durabilă a proiectelor locale."
       },
       stats: {
         experience: "Ani Experiență",
@@ -324,7 +324,7 @@ export const translations = {
       },
       topographic: {
         title: "Măsurători Topografice",
-        description: "Ridicări topografice detaliate oferind date de elevație precise milimetric și analize comprehensive de teren pentru proiectele dvs.",
+        description: "Ridicări topografice detaliate oferind date de elevație precise milimetric și analize de teren pentru proiectele dvs.",
         features: [
           "Cartografierea elevațiilor",
           "Ridicări de contur",
@@ -521,7 +521,7 @@ export const translations = {
       },
       vision: {
         title: "Наше Видение",
-        description: "Быть ведущим поставщиком геодезических услуг в Молдове, устанавливая стандарт точности, профессионализма и технологических инноваций."
+        description: "Мы стремимся быть надёжным партнёром в области геодезии в Молдове, предлагая точные и инновационные услуги, способствующие устойчивому развитию местных проектов."
       },
       stats: {
         experience: "Лет Опыта",
