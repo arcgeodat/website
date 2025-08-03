@@ -16,7 +16,7 @@ const About: React.FC<AboutProps> = ({ translations }) => {
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">{translations.about.title}</h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
           <div className="space-y-8">
             <p className="text-lg text-gray-600 leading-relaxed">
               {translations.about.description}
@@ -44,11 +44,12 @@ const About: React.FC<AboutProps> = ({ translations }) => {
           </div>
 
           <div className="relative">
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="bg-white rounded-2xl shadow-xl px-12 py-14 mb-12">
               <img
-                src="https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://images.pexels.com/photos/6615239/pexels-photo-6615239.jpeg"
                 alt="Professional surveying team"
-                className="rounded-xl w-full h-64 object-cover mb-6"
+                className="rounded-xl w-full h-64 object-cover mb-6 -mt-6"
+                loading='lazy'
               />
               <div className="space-y-4">
                 <h4 className="text-lg font-bold text-gray-900">{translations.about.team.title}</h4>
@@ -58,6 +59,7 @@ const About: React.FC<AboutProps> = ({ translations }) => {
             <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-blue-100 to-gray-100 rounded-2xl -z-10"></div>
           </div>
         </div>
+
 
         {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-8">
