@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Phone, Mail, MapPin, MessageCircle, Send, Clock, Globe, CheckCircle, AlertCircle } from 'lucide-react';
-import emailjs, { send } from '@emailjs/browser';
+import { Phone, Mail, MapPin, Send, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface ContactProps {
@@ -17,7 +17,7 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [messageType, setMessageType] = useState(''); // "success" or "error"
+  const [messageType, setMessageType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
 
