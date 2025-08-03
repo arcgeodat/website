@@ -66,7 +66,7 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
       setIsLoading(false);
     }
     console.log('Form submitted:', formData);
-    // setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
   };
 
   useEffect(() => {

@@ -15,8 +15,10 @@ import Contact from './components/website/Contact';
 import Footer from './components/website/Footer';
 import { translations } from './translations';
 import Login from './components/auth/Login';
+
 import ProtectedRoute from './components/admin/ProtectedRoute';
 import AdminDashboard from './components/admin/AdminDashboard';
+import { AuthProvider } from './components/admin/AuthContext';
 
 function App() {
   const [language, setLanguage] = useState('en');
@@ -25,43 +27,50 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen">
-        <Header
-          language={language}
-          setLanguage={setLanguage}
-          translations={t}
-        />
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Hero translations={t} />
-                  <About translations={t} />
-                  <Services translations={t} />
-                </>
-              }
-            />
-            <Route path="/about" element={<About translations={t} />} />
-            <Route path="/services" element={<Services translations={t} />} />
-            <Route path="/portfolio" element={<PortfolioPage translations={t} />} />
-            <Route path="/contact" element={<Contact translations={t} />} />
-            <Route path="/login" element={<Login />} />
+        <Routes>
+          {/* Public website routes */}
+          <Route
+            path="/*"
+            element={
+              <>
+                <Header language={language} setLanguage={setLanguage} translations={t} />
+                <main>
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        <>
+                          <Hero translations={t} />
+                          <About translations={t} />
+                          <Services translations={t} />
+                        </>
+                      }
+                    />
+                    <Route path="about" element={<About translations={t} />} />
+                    <Route path="services" element={<Services translations={t} />} />
+                    <Route path="portfolio" element={<PortfolioPage translations={t} />} />
+                    <Route path="contact" element={<Contact translations={t} />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                  </Routes>
+                </main>
+                <Footer translations={t} />
+              </>
+            }
+          />
 
-            <Route
-              path="/admin/*"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
+          {/* Admin dashboard and routes wrapped inside AuthProvider */}
+          <Route
+            path="/admin/*"
+            element={
+              <AuthProvider>
+                <ProtectedRoute allowedRoles={['admin']}>
                   <AdminDashboard />
                 </ProtectedRoute>
-              }
-            />
-
-            {/* Redirect any unknown path */}
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </main>
-        <Footer translations={t} />
+              </AuthProvider>
+            }
+          />
+        </Routes>
       </div>
     </Router>
   );

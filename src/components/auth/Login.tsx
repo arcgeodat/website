@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import Logo from "/logo-removebg.png";
 import GoogleSvg from "/icons8-google.svg";
 import { useNavigate } from "react-router-dom";
+import { User } from "../../types/index";
 
 const Login = () => {
     const navigate = useNavigate();
-    const [authState, setAuthState] = useState({
+    const [authState, setAuthState] = useState<{
+        user: User | null;
+        isAuthenticated: boolean;
+        isLoading: boolean;
+    }>({
         user: null,
         isAuthenticated: false,
-        isLoading: true,
+        isLoading: false,
     });
+
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
@@ -31,14 +37,14 @@ const Login = () => {
         e.preventDefault();
         if (!validate()) return;
         // handle login logic here
-        alert(`Logging in with email: ${formData.email}`);
+        // alert(`Logging in with email: ${formData.email}`);
 
-        const userWithRole = {
+        const userWithRole: User = {
             id: "1",
             name: "Admin User",
             email: formData.email,
-            role: "ADMIN", // or "ADMIN", "LIBRARIAN" based on your logic
-            createdAt: new Date().toISOString(),
+            role: "admin",  // literal string "admin"
+            createdAt: new Date().toISOString(), // ISO string, not Date object
         };
 
         setAuthState({
@@ -155,12 +161,3 @@ const Login = () => {
 };
 
 export default Login;
-function setAuthState(arg0: {
-    user: {
-        id: string; name: string; email: string; role: string; // or "ADMIN", "LIBRARIAN" based on your logic
-        createdAt: string;
-    }; isAuthenticated: boolean; isLoading: boolean;
-}) {
-    throw new Error("Function not implemented.");
-}
-

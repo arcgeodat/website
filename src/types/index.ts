@@ -9,6 +9,6 @@ export interface User {
     id: string;
     name: string;
     email: string;
-    role: 'admin' | 'librarian' | 'user';
+    role: 'admin';
     createdAt: string;
 }
