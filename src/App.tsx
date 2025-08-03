@@ -14,6 +14,9 @@ import PortfolioPage from './components/website/Portfolio';
 import Contact from './components/website/Contact';
 import Footer from './components/website/Footer';
 import { translations } from './translations';
+import Login from './components/auth/Login';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+import AdminDashboard from './components/admin/AdminDashboard';
 
 function App() {
   const [language, setLanguage] = useState('en');
@@ -39,11 +42,22 @@ function App() {
                 </>
               }
             />
-
             <Route path="/about" element={<About translations={t} />} />
             <Route path="/services" element={<Services translations={t} />} />
             <Route path="/portfolio" element={<PortfolioPage translations={t} />} />
             <Route path="/contact" element={<Contact translations={t} />} />
+            <Route path="/login" element={<Login />} />
+
+            <Route
+              path="/admin/*"
+              element={
+                <ProtectedRoute allowedRoles={['ADMIN']}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Redirect any unknown path */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
