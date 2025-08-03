@@ -97,21 +97,28 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, translations }) 
           </nav>
 
           {/* Language & Mobile Menu Toggle */}
-          <div className="flex items-center space-x-4">
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="text-sm border border-gray-300 rounded-md px-3 py-1 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="en">EN</option>
-              <option value="ro">RO</option>
-              <option value="ru">RU</option>
-            </select>
+          {/* Language & Mobile Menu Toggle */}
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+                className="text-sm appearance-none px-3 py-1.5 bg-white border border-gray-300 rounded-md shadow-sm pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              >
+                <option value="en">EN</option>
+                <option value="ro">RO</option>
+                <option value="ru">RU</option>
+              </select>
+              {/* Custom arrow */}
+              <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
+                ▼
+              </div>
+            </div>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-blue-800"
+              className="md:hidden p-2 rounded-md hover:bg-gray-100 text-gray-600 hover:text-blue-700 transition-colors"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
