@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Phone, Mail, MapPin, MessageCircle, Send, Clock, Globe, CheckCircle } from 'lucide-react';
+import emailjs, { send } from '@emailjs/browser';
 
 interface ContactProps {
   translations: any;
@@ -23,9 +24,33 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
     });
   };
 
+  const sendEmail = () => {
+    console.log('Sending email with data:', import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY, formData);
+
+    emailjs.send("service_arcgeodat", "template_hc5wtcm", {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      message: formData.message,
+    }, {
+      publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
+    }).then(
+      function (response) {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      function (err) {
+        console.log('FAILED...', err);
+      },
+    );
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
+    sendEmail();
+    // Reset form data
+    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    // Show success
     console.log('Form submitted:', formData);
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 5000);
@@ -233,13 +258,10 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
             <div className="mt-8 bg-gray-50 rounded-2xl p-6">
               <div className="bg-gray-200 rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2721.359137891655!2d28.839820915822785!3d47.0383813791491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97df63e0804d5%3A0xcef19385d12f41b7!2sMiron%20Costin%2025%2C%20Chi%C8%99in%C4%83u%2C%20Moldova!5e0!3m2!1sen!2s!4v1690547296923!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3437.0815184728795!2d28.866807876835978!3d47.049736126265145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97cfae9655245%3A0x6be813713ff9a183!2sStrada%20Miron%20Costin%2025%2C%20Chi%C8%99in%C4%83u%2C%20Moldova!5e1!3m2!1sro!2s!4v1754222033240!5m2!1sro!2s"
                   width="100%"
                   height="450"
-                  loading="lazy"
-                  className="w-full h-64"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                  loading="lazy"></iframe>
               </div>
             </div>
 
