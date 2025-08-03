@@ -39,6 +39,8 @@ const Login = () => {
         // handle login logic here
         // alert(`Logging in with email: ${formData.email}`);
 
+        console.log("Redirecting to the admin page:", formData);
+
         const userWithRole: User = {
             id: "1",
             name: "Admin User",
@@ -46,6 +48,8 @@ const Login = () => {
             role: "admin",  // literal string "admin"
             createdAt: new Date().toISOString(), // ISO string, not Date object
         };
+
+        console.log("User with role:", userWithRole);
 
         setAuthState({
             user: userWithRole,

@@ -40,31 +40,41 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }, []);
 
     const checkAuthStatus = async () => {
-        try {
-            // Simulate checking authentication status
-            const token = localStorage.getItem('token');
-            if (token) {
-                // In a real app, you'd validate the token with your backend
-                const userData = localStorage.getItem('user');
-                if (userData) {
-                    const user = JSON.parse(userData);
-                    setAuthState({
-                        user,
-                        isAuthenticated: true,
-                        isLoading: false,
-                    });
-                    return;
-                }
-            }
-        } catch (error) {
-            console.error('Auth check failed:', error);
-        }
+        // try {
+        //     // Simulate checking authentication status
+        //     const token = localStorage.getItem('token');
+        //     if (token) {
+        //         // In a real app, you'd validate the token with your backend
+        //         const userData = localStorage.getItem('user');
+        //         if (userData) {
+        //             const user = JSON.parse(userData);
+        //             setAuthState({
+        //                 user,
+        //                 isAuthenticated: true,
+        //                 isLoading: false,
+        //             });
+        //             return;
+        //         }
+        //     }
+        // } catch (error) {
+        //     console.error('Auth check failed:', error);
+        // }
 
-        setAuthState({
-            user: null,
-            isAuthenticated: false,
-            isLoading: false,
+        setAuthState(prev => {
+            if (
+                prev.user === null &&
+                prev.isAuthenticated === false &&
+                prev.isLoading === false
+            ) {
+                return prev; // avoid unnecessary re-render
+            }
+            return {
+                user: null,
+                isAuthenticated: false,
+                isLoading: false,
+            };
         });
+
     };
 
     const login = async (username: string, password: string) => {
