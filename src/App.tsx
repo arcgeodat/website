@@ -6,13 +6,13 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import PortfolioPage from './components/Portfolio';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Header from './components/website/Header';
+import Hero from './components/website/Hero';
+import About from './components/website/About';
+import Services from './components/website/Services';
+import PortfolioPage from './components/website/Portfolio';
+import Contact from './components/website/Contact';
+import Footer from './components/website/Footer';
 import { translations } from './translations';
 
 function App() {
