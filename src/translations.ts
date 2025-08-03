@@ -1,3 +1,5 @@
+import { fail } from "assert";
+
 export const translations = {
   en: {
     tagline: "Professional Geodetic Services",
@@ -217,7 +219,9 @@ export const translations = {
         message: "Message",
         messagePlaceholder: "Tell us about your project requirements...",
         submit: "Send Message",
-        success: "Thank you for your message! We'll contact you within 24 hours."
+        submitting: "Submitting...",
+        successfulMessage: "Thank you for your message! We'll contact you in the shortest time possible.",
+        failureMessage: "There was an error sending your message. Please try again later.",
       },
       map: {
         placeholder: "Interactive Map Coming Soon"
@@ -450,7 +454,9 @@ export const translations = {
         message: "Mesaj",
         messagePlaceholder: "Spuneți-ne despre cerințele proiectului dvs...",
         submit: "Trimiteți Mesajul",
-        success: "Mulțumim pentru mesajul dvs! Vă vom contacta în 24 de ore."
+        submitting: "Trimitere...",
+        successfulMessage: "Mulțumim pentru mesajul dvs! Vă vom contacta în cel mai scurt timp posibil.",
+        failureMessage: "A apărut o eroare la trimiterea mesajului dvs. Vă rugăm să încercați din nou mai târziu.",
       },
       map: {
         placeholder: "Harta Interactivă În Curând"
@@ -683,7 +689,9 @@ export const translations = {
         message: "Сообщение",
         messagePlaceholder: "Расскажите нам о требованиях к вашему проекту...",
         submit: "Отправить Сообщение",
-        success: "Спасибо за ваше сообщение! Мы свяжемся с вами в течение 24 часов."
+        submitting: "Отправка...",
+        successfulMessage: "Спасибо за ваше сообщение! Мы свяжемся с вами в кратчайшие сроки.",
+        failureMessage: "Произошла ошибка при отправке вашего сообщения. Пожалуйста, попробуйте позже.",
       },
       map: {
         placeholder: "Интерактивная Карта Скоро Появится"
