@@ -87,7 +87,7 @@ const Hero: React.FC<HeroProps> = ({ translations }) => {
           <div className="relative">
             <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-8">
               <img
-                src="https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/public/engineer.jpg"
                 alt="Professional surveying equipment"
                 className="rounded-xl w-full h-80 object-cover"
               />
