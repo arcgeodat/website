@@ -47,7 +47,7 @@ const About: React.FC<AboutProps> = ({ translations }) => {
             <div className="bg-white rounded-2xl shadow-xl px-12 py-14 mb-12">
               <img
                 src="https://images.pexels.com/photos/6615239/pexels-photo-6615239.jpeg"
-                alt="Professional surveying team"
+                alt="Professional planning and surveying"
                 className="rounded-xl w-full h-64 object-cover mb-6 -mt-6"
                 loading='lazy'
               />

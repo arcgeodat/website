@@ -11,7 +11,7 @@ import {
   UserPlus,
   Check,
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -48,9 +48,33 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const menuItems = [
     {
       name: 'Dashboard',
-      href: '/admin',
+      href: '/dashboard',
       icon: LayoutDashboard,
-      roles: ['ADMIN'],
+      roles: ['ADMIN', 'LIBRARIAN', 'USER'],
+    },
+    {
+      name: 'Items',
+      href: '/items',
+      icon: Book,
+      roles: ['ADMIN', 'LIBRARIAN', 'USER'],
+    },
+    {
+      name: 'Add Book',
+      href: '/items/add',
+      icon: Plus,
+      roles: ['ADMIN', 'LIBRARIAN'],
+    },
+    {
+      name: 'My Borrowed Items',
+      href: '/borrowed',
+      icon: BookOpen,
+      roles: ['USER'],
+    },
+    {
+      name: 'Reviews',
+      href: '/reviews',
+      icon: Star,
+      roles: ['ADMIN', 'LIBRARIAN', 'USER'],
     },
     {
       name: 'Users',
@@ -68,13 +92,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       name: 'Approvals',
       href: '/approvals',
       icon: Check,
-      roles: ['ADMIN'],
+      roles: ['ADMIN', 'LIBRARIAN'],
     },
     {
       name: 'Settings',
       href: '/settings',
       icon: Settings,
-      roles: ['ADMIN'],
+      roles: ['ADMIN', 'LIBRARIAN', 'USER'],
     },
   ];
 
@@ -97,8 +121,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       )}
 
       {/* Sidebar */}
-      <div className={`fixed left-0 top-0 z-30 w-64 h-screen bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+      <div
+        className={`fixed left-0 top-0 z-30 w-64 h-screen bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <div className="flex flex-col h-full">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
