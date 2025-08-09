@@ -75,7 +75,7 @@ const Hero: React.FC<HeroProps> = ({ translations }) => {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <a
-                href="tel:+37369123456"
+                href="tel:+37368534760"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-800 text-blue-800 rounded-lg hover:bg-blue-800 hover:text-white transition-colors font-semibold"
               >
                 <Phone className="mr-2 h-5 w-5" />
