@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
-import { all } from 'axios';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -10,6 +9,9 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowedRoles }) => {
   const { isAuthenticated, user, isLoading } = useAuth();
+  console.log("ProtectedRoute isLoading:", isLoading);
+  console.log("ProtectedRoute isAuthenticated:", isAuthenticated);
+  console.log("ProtectedRoute user:", user);
 
   if (isLoading) {
     return (

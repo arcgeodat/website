@@ -34,10 +34,10 @@ const DashboardRouter: React.FC = () => {
   console.log('Identifying user role');
   console.log(user);
 
-  if (!user) {
-    console.log('No user found, redirecting to login');
-    return <Navigate to="/login" replace />;
-  }
+  // if (!user) {
+  //   console.log('No user found, redirecting to login');
+  //   return <Navigate to="/login" replace />;
+  // }
 
   switch ((user?.role ?? 'USER').toUpperCase()) {
     case 'ADMIN':
