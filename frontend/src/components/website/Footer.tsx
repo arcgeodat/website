@@ -69,10 +69,13 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
-              <MapPin className="h-8 w-8 text-blue-400" />
+              <img
+                src="./public/logo-removebg.png"
+                alt="ARCGEODAT"
+                className="w-20 h-20"
+              />
               <div>
-                <h3 className="text-2xl font-bold">Arcgeodat</h3>
-                <p className="text-gray-400 text-sm">{translations.tagline}</p>
+                <p className="text-gray-400 text-s font-medium">{translations.tagline}</p>
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6 max-w-md">
@@ -112,7 +115,7 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-blue-400 mt-1" />
                 <span className="text-gray-300">
-                  str. Miron Costin 25, of 126<br />
+                  str. Miron Costin 25, of. 116<br />
                   Chișinău, Moldova
                 </span>
               </div>

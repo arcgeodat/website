@@ -70,10 +70,14 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, translations }) 
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Navigation className="h-10 w-10 text-blue-800" />
+            <img
+              src="./public/logo-removebg.png"
+              alt="ARCGEODAT"
+              className="w-20 h-20"
+            />
             <div>
-              <h1 className="text-2xl font-bold text-blue-800 tracking-tight">ARCGEODAT</h1>
-              <p className="text-xs text-gray-500 font-medium">{translations.tagline}</p>
+              {/* <h1 className="text-2xl font-bold text-blue-800 tracking-tigh t">ARCGEODAT</h1> */}
+              <p className="text-s text-gray-500 font-medium">{translations.tagline}</p>
             </div>
           </div>
 

@@ -119,7 +119,7 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-1">{translations.contact.info.address}</h4>
-                    <p className="text-gray-600">str. Miron Costin 25, of 126</p>
+                    <p className="text-gray-600">str. Miron Costin 25, of 116</p>
                     <p className="text-gray-600">Chișinău, Moldova</p>
                   </div>
                 </div>
