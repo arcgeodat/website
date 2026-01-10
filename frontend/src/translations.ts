@@ -155,6 +155,12 @@ export const translations = {
       title: "Our Portfolio",
       subtitle: "Explore our recent projects and see the quality, precision, and professional standards we bring to every assignment.",
       backToPortfolio: "Back to Portfolio",
+      inDevelopment: {
+        title: "Portfolio Currently in Development",
+        message: "We're working hard to showcase our amazing projects. Please check back soon!",
+        backHome: "Back to Home",
+        contactUs: "Contact Us"
+      },
       categories: {
         all: "All Projects",
         residential: "Residential",
@@ -409,6 +415,12 @@ export const translations = {
       title: "Portofoliul Nostru",
       subtitle: "Explorați proiectele noastre recente și vedeți calitatea, precizia și standardele profesionale pe care le aducem la fiecare sarcină.",
       backToPortfolio: "Înapoi la Portofoliu",
+      inDevelopment: {
+        title: "Portofoliul Este În Dezvoltare",
+        message: "Lucrăm din greu pentru a vă prezenta proiectele noastre uimitoare. Vă rugăm să verificați din nou în curând!",
+        backHome: "Înapoi la Pagina Principală",
+        contactUs: "Contactați-ne"
+      },
       categories: {
         all: "Toate Proiectele",
         residential: "Rezidențial",
@@ -663,6 +675,12 @@ export const translations = {
       title: "Наше Портфолио",
       subtitle: "Ознакомьтесь с нашими недавними проектами и увидьте качество, точность и профессиональные стандарты, которые мы привносим в каждое задание.",
       backToPortfolio: "Назад к Портфолио",
+      inDevelopment: {
+        title: "Портфолио В Разработке",
+        message: "Мы усердно работаем, чтобы показать наши удивительные проекты. Пожалуйста, зайдите позже!",
+        backHome: "Вернуться на Главную",
+        contactUs: "Связаться с Нами"
+      },
       categories: {
         all: "Все Проекты",
         residential: "Жилые",

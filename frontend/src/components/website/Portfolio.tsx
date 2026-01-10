@@ -1,13 +1,64 @@
 import React, { useEffect } from 'react';
-import { Calendar, MapPin, ArrowLeft, ExternalLink, CheckCircle } from 'lucide-react';
+import { Calendar, MapPin, ArrowLeft, ExternalLink, Construction } from 'lucide-react';
 import { useNavigate } from 'react-router';
 
 interface PortfolioPageProps {
   translations: any;
 }
 
+// Feature flag to control portfolio visibility
+const IS_PORTFOLIO_IN_DEVELOPMENT = true;
+
 const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations }) => {
+  // Call all hooks unconditionally first (React rules of hooks)
   const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = React.useState(
+    translations.portfolio?.categories?.all || "All Projects"
+  );
+  const [selectedProject, setSelectedProject] = React.useState<any>(null);
+
+  useEffect(() => {
+    if (!IS_PORTFOLIO_IN_DEVELOPMENT) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, []);
+
+  // Show "in development" message if flag is enabled
+  if (IS_PORTFOLIO_IN_DEVELOPMENT) {
+    return (
+      <section className="pt-20 min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+          <div className="bg-white rounded-2xl shadow-xl p-12 border-2 border-blue-100">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mx-auto mb-6">
+              <Construction className="h-10 w-10 text-blue-700" />
+            </div>
+            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              {translations.portfolio?.inDevelopment?.title || "Portfolio Currently in Development"}
+            </h1>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              {translations.portfolio?.inDevelopment?.message || "We're working hard to showcase our amazing projects. Please check back soon!"}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => navigate('/')}
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors font-semibold"
+              >
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                {translations.portfolio?.inDevelopment?.backHome || "Back to Home"}
+              </button>
+              <button
+                onClick={() => navigate('/contact')}
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-800 border-2 border-blue-800 rounded-lg hover:bg-blue-50 transition-colors font-semibold"
+              >
+                {translations.portfolio?.inDevelopment?.contactUs || "Contact Us"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const projects = [
     {
       id: 1,
@@ -116,16 +167,9 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations }) => {
     translations.portfolio.categories.industrial
   ];
 
-  const [selectedCategory, setSelectedCategory] = React.useState(translations.portfolio.categories.all);
-  const [selectedProject, setSelectedProject] = React.useState<any>(null);
-
   const filteredProjects = selectedCategory === translations.portfolio.categories.all
     ? projects
     : projects.filter(project => project.category === selectedCategory);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
 
   if (selectedProject) {
     return (
@@ -248,8 +292,16 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ translations }) => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
+              role="button"
+              tabIndex={0}
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
               onClick={() => setSelectedProject(project)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedProject(project);
+                }
+              }}
             >
               <div className="relative overflow-hidden">
                 <img
