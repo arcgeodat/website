@@ -9,6 +9,7 @@ import {
 import Header from './components/website/Header';
 import Hero from './components/website/Hero';
 import About from './components/website/About';
+import License from './components/website/License';
 import Services from './components/website/Services';
 import PortfolioPage from './components/website/Portfolio';
 import Contact from './components/website/Contact';
@@ -71,6 +72,7 @@ function App() {
                 <Header language={language} setLanguage={setLanguage} translations={t} />
                 <Hero translations={t} />
                 <About translations={t} />
+                <License translations={t} />
                 <Services translations={t} />
                 <Footer translations={t} />
               </>

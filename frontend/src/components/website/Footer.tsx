@@ -70,7 +70,7 @@ const Footer: React.FC<FooterProps> = ({ translations }) => {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
               <img
-                src="./public/logo-removebg.png"
+                src="./logo-removebg.png"
                 alt="ARCGEODAT"
                 className="w-20 h-20"
               />

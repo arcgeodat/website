@@ -71,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, translations }) 
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
-              src="./public/logo-removebg.png"
+              src="./logo-removebg.png"
               alt="ARCGEODAT"
               className="w-20 h-20"
             />

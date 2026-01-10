@@ -18,7 +18,7 @@ export const translations = {
       clients: "500+ Happy Clients",
       precision: "Millimeter Precision",
       licensed: "Licensed Professionals",
-      cta: "Get Free Quote",
+      cta: "Get a Quote",
       callNow: "Call Now",
       trustedBy: "Trusted by professionals",
       certifications: {
@@ -63,6 +63,25 @@ export const translations = {
         experience: "Years Experience",
         projects: "Completed Projects"
       }
+    },
+    license: {
+      badge: "License & Certification",
+      title: "Company License & Certification",
+      subtitle: "We operate under official licenses and certifications, ensuring compliance with all national regulations and professional standards.",
+      certification: {
+        title: "Official Certification",
+        description: "Our company holds valid licenses issued by the relevant authorities in Moldova, demonstrating our commitment to professional standards and regulatory compliance."
+      },
+      compliance: {
+        title: "Regulatory Compliance",
+        description: "All our services are performed in accordance with national geodetic regulations and standards, ensuring the validity and accuracy of all documentation."
+      },
+      viewCertificate: "Official License Certificate",
+      viewCertificateDesc: "Click the button below to view our official license certificate",
+      officialLicense: "View Our License",
+      licenseDescription: "Click below to access our official company license certificate stored securely in our documentation system.",
+      viewCertificateButton: "View Certificate",
+      opensInNewTab: "Opens in a new tab"
     },
     services: {
       badge: "Our Services",
@@ -127,7 +146,7 @@ export const translations = {
       cta: {
         title: "Ready to Start Your Project?",
         description: "Get a free consultation with our certified geodetic engineers and discover how we can help with your land surveying needs.",
-        contact: "Get Free Quote",
+        contact: "Get a Quote",
         portfolio: "View Our Work"
       }
     },
@@ -193,7 +212,7 @@ export const translations = {
       cta: {
         title: "Have a Similar Project?",
         description: "Contact our certified geodetic engineers for a free consultation and detailed project proposal.",
-        contact: "Get Free Quote"
+        contact: "Get a Quote"
       }
     },
     contact: {
@@ -253,7 +272,7 @@ export const translations = {
       clients: "500+ Clienți Mulțumiți",
       precision: "Precizie Milimetrică",
       licensed: "Profesioniști Licențiați",
-      cta: "Obțineți Ofertă Gratuită",
+      cta: "Obțineți Ofertă",
       callNow: "Sunați Acum",
       trustedBy: "De încredere pentru profesioniști",
       certifications: {
@@ -298,6 +317,25 @@ export const translations = {
         experience: "Ani Experiență",
         projects: "Proiecte Finalizate"
       }
+    },
+    license: {
+      badge: "Licență și Certificare",
+      title: "Licență și Certificare a Companiei",
+      subtitle: "Operăm sub licențe și certificări oficiale, asigurând conformitatea cu toate reglementările naționale și standardele profesionale.",
+      certification: {
+        title: "Certificare Oficială",
+        description: "Compania noastră deține licențe valide emise de autoritățile competente din Moldova, demonstrând angajamentul nostru față de standardele profesionale și conformitatea reglementară."
+      },
+      compliance: {
+        title: "Conformitate Reglementară",
+        description: "Toate serviciile noastre sunt efectuate în conformitate cu reglementările și standardele naționale de geodezie, asigurând valabilitatea și acuratețea tuturor documentelor."
+      },
+      viewCertificate: "Certificat de Licență Oficial",
+      viewCertificateDesc: "Faceți clic pe butonul de mai jos pentru a vizualiza certificatul nostru oficial de licență",
+      officialLicense: "Vizualizați Licența Noastră",
+      licenseDescription: "Faceți clic mai jos pentru a accesa certificatul oficial de licență al companiei noastre, stocat în siguranță în sistemul nostru de documentare.",
+      viewCertificateButton: "Vizualizați Certificatul",
+      opensInNewTab: "Se deschide într-o filă nouă"
     },
     services: {
       badge: "Serviciile Noastre",
@@ -362,7 +400,7 @@ export const translations = {
       cta: {
         title: "Gata să Începeți Proiectul?",
         description: "Obțineți o consultație gratuită cu inginerii noștri geodezi certificați și descoperiți cum vă putem ajuta cu nevoile de topografie.",
-        contact: "Obțineți Ofertă Gratuită",
+        contact: "Obțineți Ofertă",
         portfolio: "Vedeți Munca Noastră"
       }
     },
@@ -428,7 +466,7 @@ export const translations = {
       cta: {
         title: "Aveți un Proiect Similar?",
         description: "Contactați inginerii noștri geodezi certificați pentru o consultație gratuită și o propunere detaliată de proiect.",
-        contact: "Obțineți Ofertă Gratuită"
+        contact: "Obțineți Ofertă"
       }
     },
     contact: {
@@ -488,7 +526,7 @@ export const translations = {
       clients: "500+ Довольных Клиентов",
       precision: "Миллиметровая Точность",
       licensed: "Лицензированные Специалисты",
-      cta: "Получить Бесплатную Консультацию",
+      cta: "Получить Консультацию",
       callNow: "Позвонить Сейчас",
       trustedBy: "Доверяют профессионалы",
       certifications: {
@@ -533,6 +571,25 @@ export const translations = {
         experience: "Лет Опыта",
         projects: "Завершенных Проектов"
       }
+    },
+    license: {
+      badge: "Лицензия и Сертификация",
+      title: "Лицензия и Сертификация Компании",
+      subtitle: "Мы работаем по официальным лицензиям и сертификатам, обеспечивая соответствие всем национальным правилам и профессиональным стандартам.",
+      certification: {
+        title: "Официальная Сертификация",
+        description: "Наша компания имеет действительные лицензии, выданные соответствующими органами Молдовы, что демонстрирует нашу приверженность профессиональным стандартам и нормативным требованиям."
+      },
+      compliance: {
+        title: "Нормативное Соответствие",
+        description: "Все наши услуги выполняются в соответствии с национальными геодезическими правилами и стандартами, обеспечивая действительность и точность всей документации."
+      },
+      viewCertificate: "Официальный Сертификат Лицензии",
+      viewCertificateDesc: "Нажмите кнопку ниже, чтобы просмотреть наш официальный сертификат лицензии",
+      officialLicense: "Просмотреть Нашу Лицензию",
+      licenseDescription: "Нажмите ниже, чтобы получить доступ к официальному сертификату лицензии нашей компании, хранящемуся в нашей системе документации.",
+      viewCertificateButton: "Просмотреть Сертификат",
+      opensInNewTab: "Откроется в новой вкладке"
     },
     services: {
       badge: "Наши Услуги",
@@ -597,7 +654,7 @@ export const translations = {
       cta: {
         title: "Готовы Начать Ваш Проект?",
         description: "Получите бесплатную консультацию с нашими сертифицированными инженерами-геодезистами и узнайте, как мы можем помочь с вашими потребностями в землемерных работах.",
-        contact: "Получить Бесплатную Консультацию",
+        contact: "Получить Консультацию",
         portfolio: "Посмотреть Наши Работы"
       }
     },
@@ -663,7 +720,7 @@ export const translations = {
       cta: {
         title: "Есть Похожий Проект?",
         description: "Свяжитесь с нашими сертифицированными инженерами-геодезистами для бесплатной консультации и детального предложения по проекту.",
-        contact: "Получить Бесплатную Консультацию"
+        contact: "Получить Консультацию"
       }
     },
     contact: {
