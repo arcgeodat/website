@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /login
+Disallow: /dashboard
+Disallow: /items
+Disallow: /maps/
+Disallow: /borrowed
+Disallow: /approvals
+Disallow: /users
+Disallow: /settings
+
+Sitemap: https://arcgeodat.md/sitemap.xml
